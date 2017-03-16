@@ -30,7 +30,7 @@ public double getPerimeter(){
 }
 
 public boolean contains (double x, double y){
-  if (((this.width+0.5*this.x)>=x && (this.width-0.5*this.x)<=x) &&((this.height+0.5*this.y)>=y && (this.height-0.5*this.y)<=y)){
+  if (((this.x+0.5*this.width)>=x && (this.x-0.5*this.width)<=x) &&((this.y+0.5*this.height)>=y && (this.y-0.5*this.height)<=y)){
     return true;
   }
   else {
@@ -38,8 +38,13 @@ public boolean contains (double x, double y){
   }     
 }
 
-public boolean contains(MyRectangle2D a){
-if (((a.x-0.5*a.width)>=(this.x-0.5*this.width)) && ((a.y+0.5*a.height)<=(this.y+0.5*a.height)) && ((this.width+0.5*this.x)>=a.x && (this.width-0.5*this.x)<=a.x) && ((this.height+0.5*this.y)>=a.y && (this.height-0.5*this.y)<=a.y)){
+public boolean contains(MyRectangle2D r){
+double xLowerLeft= r.x-0.5*r.width;
+double yLowerLeft=r.y-0.5*r.height;
+double xUpperRight=r.x+0.5*r.width;
+double yUpperRight=r.y+0.5*r.height;
+
+if ( this.contains(xLowerLeft,yLowerLeft)&& this.contains(xUpperRight,yUpperRight)){
   return true;
 }
 else {
@@ -47,7 +52,24 @@ else {
 }
 }
 
-//public boolean overlaps(MyRectangle2D){
+public boolean overlaps(MyRectangle2D r){
+  double xLowerLeft= r.x-0.5*r.width;
+  double yLowerLeft=r.y-0.5*r.height;
+  double xLowerRight= r.x+0.5*r.width;
+  double yLowerRight=r.y-0.5*r.height;
+  double xUpperLeft=r.x-0.5*r.width;
+  double yUpperLeft=r.y+0.5*r.height;
+  double xUpperRight=r.x+0.5*r.width;
+  double yUpperRight=r.y+0.5*r.height;
+  
+  if (this.contains(xLowerLeft,yLowerLeft) || (this.contains(xUpperRight, yUpperRight)) ||(this.contains(xLowerRight, yLowerRight)) ||(this.contains(xUpperLeft, yUpperLeft))){
+    return true;
+  }
+  
+  else {
+    return false;
+  }
+}
 
 /**
  * @return the x
