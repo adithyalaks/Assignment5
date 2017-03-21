@@ -6,6 +6,7 @@ public class Question3 {
 
   public static void method(int[] array){
     try{
+      
       System.out.println("Enter and index of the list:");
       Scanner input = new Scanner(System.in);
       int x = input.nextInt();
@@ -31,13 +32,10 @@ public class Question3 {
     }
     //System.out.println(array[11]);
     
-    try {
-      Question3.method(array);
+   
+     Question3.method(array);
       
-    } catch (Exception IndexOutOfBoundsException){
-      System.out.println("Index out of bounds");
-      
-    }
+    
     
 
   }
