@@ -23,7 +23,7 @@ public class Question3 {
         indexNotPrinted = false;
       }
         catch (Exception IndexOutOfBoundsException) {
-        System.out.println("Out of Bounds");
+        System.out.println("Out of Bounds.");
       }
     }
   }
