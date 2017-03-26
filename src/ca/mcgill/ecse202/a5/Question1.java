@@ -7,8 +7,8 @@ public static void main (String[] args){
   System.out.println(r1.getArea());
   System.out.println(r1.getPerimeter());
   System.out.println(r1.contains(3,3));
-  System.out.println(r1.contains(new MyRectangle2D(4,5,10.5,3.2)));
-  System.out.println(r1.overlaps(new MyRectangle2D(3,5,2.3,5.4)));
+  System.out.println(r1.contains(new MyRectangle2D(4,5,10.5,3.2)));// This ought to return false.
+  System.out.println(r1.overlaps(new MyRectangle2D(3,5,2.3,5.4)));//This ought to return true. 
   
   
   
