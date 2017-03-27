@@ -1,7 +1,7 @@
 package ca.mcgill.ecse202.a5;
- 
+//This is the test class given to us in Appendix B of the Assignment's instructions. 
 public class Question4 {
-  public static void main(String[] args) {
+public static void main(String[] args) {
 try {
 TriangleWithException t1 = new TriangleWithException(1.5, 2, 3); System.out.println("Perimeter for t1: " + t1.getPerimeter()); System.out.println("Area for t1: " + t1.getArea());
 TriangleWithException t2 = new TriangleWithException(1, 2, 3); System.out.println("Perimeter for t2: " + t2.getPerimeter()); System.out.println("Area for t2: " + t2.getArea());
