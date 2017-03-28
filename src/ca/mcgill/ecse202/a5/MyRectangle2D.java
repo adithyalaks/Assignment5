@@ -63,8 +63,8 @@ public class MyRectangle2D {
     // checks to see if the entered coordinates are inside the MyRectangle2D object that is
     // accesssing this method and returns true if it does
     // we consider contains to include if it on the edge of the rectangle
-    if (((this.x + 0.5 * this.width) >= x && (this.x - 0.5 * this.width) <= x)
-        && ((this.y + 0.5 * this.height) >= y && (this.y - 0.5 * this.height) <= y)) {
+    if (((this.x + 0.5 * this.width) > x && (this.x - 0.5 * this.width) < x)
+        && ((this.y + 0.5 * this.height) > y && (this.y - 0.5 * this.height) < y)) {
       return true;
     } else {
       return false;
@@ -86,15 +86,28 @@ public class MyRectangle2D {
     double xUpperRight = r.x + 0.5 * r.width;
     double yUpperRight = r.y + 0.5 * r.height;
 
-    // As guided by Dirk, we first check if the two rectangles compared have exactly the same
-    // dimensions and the same centers. If they do, then the method returns false, as the two
-    // rectangles do not contain each other.
-    if ((this.x == r.x) && (this.y == r.y) && (this.width == r.width)
-        && (this.height == r.height)) {
+    if (this.contains(xLowerLeft, yLowerLeft) && this.contains(xUpperRight, yUpperRight)) {
+      return true;
+    } else {
       return false;
     }
+  }
 
-    if (this.contains(xLowerLeft, yLowerLeft) && this.contains(xUpperRight, yUpperRight)) {
+
+  /**
+   * This method is a variant of the earlier overlaps method, with the exception that it returns
+   * true for points that are on the perimeter of the rectangle that invokes the method.
+   * 
+   * @param x: This is the x-coordinate of the point that the user wants to check for being in a
+   *        rectangle or on its perimeter.
+   * @param y: This is the y-coordinate of the point that the user wants to check for being in a
+   *        rectangle or on its perimeter.
+   * @return: The method returns true if the coordinate passed as an argument is contained in, or is
+   *          on the perimeter of the rectangle that invokes the method.Otherwise, it returns false.
+   */
+  public boolean containsOverlap(double x, double y) {
+    if (((this.x + 0.5 * this.width) >= x && (this.x - 0.5 * this.width) <= x)
+        && ((this.y + 0.5 * this.height) >= y && (this.y - 0.5 * this.height) <= y)) {
       return true;
     } else {
       return false;
@@ -108,6 +121,10 @@ public class MyRectangle2D {
    * @return either true or false, depending on whether rectangle that invokes the method overlaps
    *         with the rectangle passed as an argument to the method.
    */
+  /**
+   * @param r
+   * @return
+   */
   public boolean overlaps(MyRectangle2D r) {
     double xLowerLeft = r.x - 0.5 * r.width;
     double yLowerLeft = r.y - 0.5 * r.height;
@@ -118,8 +135,12 @@ public class MyRectangle2D {
     double xUpperRight = r.x + 0.5 * r.width;
     double yUpperRight = r.y + 0.5 * r.height;
 
-    if (this.contains(xLowerLeft, yLowerLeft) || (this.contains(xUpperRight, yUpperRight))
-        || (this.contains(xLowerRight, yLowerRight)) || (this.contains(xUpperLeft, yUpperLeft))) {
+
+
+    if (this.containsOverlap(xLowerLeft, yLowerLeft)
+        || (this.containsOverlap(xUpperRight, yUpperRight))
+        || (this.containsOverlap(xLowerRight, yLowerRight))
+        || (this.containsOverlap(xUpperLeft, yUpperLeft))) {
       return true;
     }
 
