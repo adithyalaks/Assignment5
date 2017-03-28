@@ -105,7 +105,7 @@ public class MyRectangle2D {
    * @return: The method returns true if the coordinate passed as an argument is contained in, or is
    *          on the perimeter of the rectangle that invokes the method.Otherwise, it returns false.
    */
-  public boolean containsOverlap(double x, double y) {
+  private boolean containsOverlap(double x, double y) {
     if (((this.x + 0.5 * this.width) >= x && (this.x - 0.5 * this.width) <= x)
         && ((this.y + 0.5 * this.height) >= y && (this.y - 0.5 * this.height) <= y)) {
       return true;
