@@ -61,10 +61,9 @@ public double getSide3() {
  */
 @Override
 public double getArea() {
- double cosAngleSide1=(Math.pow(side2, 2)+ Math.pow(side3, 2)-Math.pow(side1, 2))/(2*side2*side3);
- double AngleSide1= Math.acos(cosAngleSide1);
- double area= 0.5*side2*side3*Math.sin(AngleSide1);
- return area; 
+  double s = (this.side1 + this.side2 + this.side3) / 2;
+  double area = Math.sqrt(s * (s - this.side1) * (s - this.side2) * (s - this.side3));
+  return area;
 }
 /*
  * (non-Javadoc)
